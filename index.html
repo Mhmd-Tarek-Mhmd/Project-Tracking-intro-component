@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project tracking intro component</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed:wght@400;700&display=swap"
+    />
+
+    <!-- Component style -->
+    <style>
+      /* Global style */
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font: 400 18px "Barlow", sans-serif;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /* Grid */
+      .grid-container {
+        padding-left: 32px;
+        padding-right: 32px;
+      }
+      @media (min-width: 900px) {
+        .grid-container {
+          padding-left: 50px;
+          padding-right: 50px;
+        }
+      }
+      @media (min-width: 1200px) {
+        .grid-container {
+          padding-left: 75px;
+          padding-right: 75px;
+        }
+      }
+      @media (min-width: 1400px) {
+        .grid-container {
+          padding-left: 165px;
+          padding-right: 165px;
+        }
+      }
+
+      /* Utilities */
+      .hide {
+        display: none;
+      }
+      .p-relative {
+        position: relative;
+      }
+      .p-absolute {
+        position: absolute;
+      }
+      .d-flex {
+        display: flex;
+      }
+      .align-center-flex {
+        align-items: center;
+      }
+      .center-flex {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      @media (max-width: 991px) {
+        .mobile-hide {
+          display: none;
+        }
+      }
+      @media (min-width: 992px) {
+        .screen-hide {
+          display: none;
+        }
+      }
+
+      /*
+      ** Hero section
+      */
+      section.hero,
+      section.hero header {
+        overflow: hidden;
+      }
+
+      /* Nav area */
+      nav {
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100px;
+        justify-content: space-between;
+      }
+      nav ul {
+        list-style: none;
+        font-weight: 700;
+        color: hsl(230, 29%, 20%);
+        font-family: "Barlow Condensed";
+      }
+      nav ul hr {
+        background-color: hsl(231, 7%, 65%);
+      }
+      nav ul li:last-child {
+        color: hsl(230, 11%, 40%);
+      }
+      nav ul li:hover {
+        text-decoration: underline;
+      }
+
+      /* [1] Nav Links */
+      nav .nav-links hr {
+        height: 5px;
+        border-radius: 50%;
+      }
+      nav .nav-links li:nth-child(2) {
+        margin: 0 42px;
+      }
+      nav .nav-links li:nth-last-child(2) {
+        width: 5px;
+        margin: 0 28px;
+      }
+
+      /* [2] Nav Links For Small Screens */
+      nav .mobile-nav-links {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 311px;
+        height: 233px;
+        padding: 25px;
+        list-style: none;
+        text-align: center;
+        flex-direction: column;
+        background-color: #fff;
+      }
+      nav .mobile-nav-links li:nth-child(2) {
+        margin: 33px 0;
+      }
+      nav .mobile-nav-links li:nth-last-child(2) {
+        width: 100%;
+        margin: 28px 0;
+      }
+
+      /* Header area */
+
+      /* [1] Header Image */
+      header .image {
+        z-index: -1;
+        height: 53vh;
+        margin-bottom: 27px;
+      }
+      header .image::before,
+      header .image::after {
+        right: 0;
+        content: "";
+        position: absolute;
+      }
+      header .image::before {
+        width: 45%;
+        height: 100%;
+        background-color: #edf2f6;
+        border-bottom-left-radius: 60px;
+      }
+      header .image::after {
+        top: 120px;
+        width: 100%;
+        height: 250px;
+        background-size: cover;
+        background-image: url(images/illustration-devices.svg);
+      }
+      @media (min-width: 600px) {
+        header {
+          display: flex;
+          justify-content: space-between;
+        }
+        header .image,
+        header .image::before {
+          width: 50vw;
+        }
+        header .image {
+          order: 2;
+          height: 100vh;
+          margin-bottom: 0;
+        }
+        header .image::before {
+          height: 50%;
+        }
+        header .image::after {
+          top: 275px;
+        }
+      }
+      @media (min-width: 992px) {
+        header .image::after {
+          display: none;
+        }
+        header .image img {
+          z-index: 1;
+          top: 220px;
+          right: -37%;
+          width: 135%;
+          height: auto;
+        }
+      }
+
+      /* [2] Header Text */
+      @media (min-width: 600px) {
+        header .text {
+          width: 45vw;
+          padding-right: 0;
+          align-self: center;
+        }
+      }
+      header .text span {
+        text-transform: uppercase;
+        color: hsl(231, 7%, 65%);
+        font-family: "Barlow Condensed";
+      }
+      header .text .badge {
+        width: 48px;
+        height: 25px;
+        padding: 3px;
+        font-size: 15px;
+        margin-right: 17px;
+        text-align: center;
+        border-radius: 15px;
+        color: hsl(207, 33%, 95%);
+        background-color: hsl(230, 29%, 20%);
+      }
+      header .text .badge + span {
+        font-size: 15px;
+        letter-spacing: 5px;
+      }
+      header .text h1 {
+        line-height: 1;
+        margin-top: 20px;
+        text-transform: uppercase;
+        color: hsl(230, 29%, 20%);
+        font: 700 2.2em "Barlow Condensed";
+      }
+      header .text p {
+        line-height: 1.5;
+        margin: 15px 0 20px;
+        color: hsl(230, 11%, 40%);
+      }
+      header .text a {
+        width: 153px;
+        height: 40px;
+        padding: 10px;
+        margin-right: 20px;
+        border-radius: 5px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: hsl(207, 33%, 95%);
+        font: 700 13px "Barlow Condensed";
+        background-color: hsl(0, 100%, 68%);
+      }
+      header .text a:hover {
+        opacity: 0.8;
+      }
+      header .text a + span {
+        font-size: 12px;
+        letter-spacing: 2px;
+        transform: scaleY(1.5);
+      }
+      @media (min-width: 1200px) {
+        header .text h1 {
+          font-size: 3.6em;
+          margin-top: 16px;
+        }
+        header .text p {
+          margin: 30px 0 65px;
+        }
+        header .text a {
+          width: 184px;
+          height: 48px;
+          font-size: 17px;
+          margin-right: 25px;
+          letter-spacing: 1px;
+        }
+        header .text a + span {
+          font-size: 11px;
+          letter-spacing: 4px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero p-relative">
+      <!-- Nav area -->
+      <nav class="grid-container d-flex align-center-flex p-absolute">
+        <a href="#" class="logo">
+          <img src="images/logo.svg" alt="Logo" />
+        </a>
+
+        <img
+          src="images/icon-hamburger.svg"
+          alt="open nav menu"
+          role="button"
+          style="cursor: pointer"
+          tabindex="0"
+          class="mobile-nav-toggle screen-hide"
+          onclick="toggleMobileNav(event)"
+        />
+
+        <ul class="nav-links center-flex mobile-hide">
+          <li><a href="#">Product</a></li>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><hr /></li>
+          <li><a href="#">Login</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header area -->
+      <header>
+        <!-- [1] Header Image -->
+        <div class="image p-relative">
+          <img
+            src="images/illustration-devices.svg"
+            alt=""
+            class="p-absolute mobile-hide"
+          />
+        </div>
+
+        <!-- [2] Header Text -->
+        <div class="text grid-container">
+          <div class="d-flex align-center-flex">
+            <span class="badge">New</span>
+            <span>Monograph Dashboard</span>
+          </div>
+
+          <h1>Powerful insights<br />into your team</h1>
+          <p>Project planning and time tracking<br />for agile teams</p>
+
+          <div class="d-flex align-center-flex">
+            <a href="#" class="center-flex">Schedule a demo</a>
+            <span>to see a live preview</span>
+          </div>
+        </div>
+      </header>
+    </section>
+
+    <script>
+      /* Helper Functions */
+      function toggleClass(target, className) {
+        target.classList.toggle(className);
+      }
+      function toggleMobileNav(e) {
+        const target = e.target;
+        const targetNextSibling = target.nextElementSibling;
+
+        toggleClass(targetNextSibling, "nav-links");
+        toggleClass(targetNextSibling, "mobile-hide");
+        toggleClass(targetNextSibling, "mobile-nav-links");
+
+        if (target.src.includes("images/icon-hamburger.svg")) {
+          target.alt = "close nav menu";
+          target.src = "images/icon-close.svg";
+        } else {
+          target.alt = "open nav menu";
+          target.src = "images/icon-hamburger.svg";
+        }
+      }
+
+      // Handle active class
+      document.querySelectorAll(".hero nav ul li").forEach((ele) =>
+        ele.addEventListener("click", (e) => {
+          document
+            .querySelectorAll(".hero nav ul li")
+            .forEach((node) => node.classList.remove("active"));
+
+          e.target.classList.add("active");
+        })
+      );
+    </script>
+  </body>
+</html>
