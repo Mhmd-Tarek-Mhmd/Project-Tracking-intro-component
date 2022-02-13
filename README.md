@@ -5,7 +5,7 @@ This is a solution to the [Project tracking intro component challenge on Fronten
 ## Links
 
 - Live Site [URL](https://mhmd-tarek-mhmd.github.io/Project-Tracking-intro-component)
-- Solution [URL](https://www.frontendmentor.io/solutions/project-tracking-intro-component-)
+- Solution [URL](https://www.frontendmentor.io/solutions/project-tracking-intro-component-gEj2tK-CU)
 
 ## Screenshots
 
