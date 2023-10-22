@@ -317,57 +317,59 @@
     }
   </style>
   <body>
-    <header>
-      <div class="container">
-        <!-- [1] Nav -->
-        <nav>
-          <a href="/" class="logo">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
-              <g fill="#323334" fill-rule="evenodd">
-                <path
-                  d="M0 32V.241h23.041zM31.15 32V.241h-4.411L17.48 13.158zM3.645 32l11.854-15.879L27.353 32z"
-                />
-              </g>
-            </svg>
-          </a>
-
-          <button
-            class="menu-toggler"
-            aria-label="Show links menu"
-            onclick="toggler(event)"
-          >
-            <img src="images/icon-hamburger.svg" alt="" />
-          </button>
-
-          <ul class="links">
-            <li><a href="/">Product</a></li>
-            <li><a href="/">Features</a></li>
-            <li><a href="/">Pricing</a></li>
-            <li class="separator"></li>
-            <li><a href="/">Login</a></li>
-          </ul>
-        </nav>
-
-        <!-- [2] Txt -->
-        <div class="txt">
-          <div class="badge">
-            <span>New</span>
-            <p class="special-txt">Monograph Dashboard</p>
-          </div>
-
-          <h1 class="title">
-            Powerful insights<br />
-            into your team
-          </h1>
-          <p>Project planning and time tracking for agile teams</p>
-
-          <div class="demo">
-            <a href="/">Schedule a demo</a>
-            <span class="special-txt">to see a live preview</span>
+    <main>
+      <header>
+        <div class="container">
+          <!-- [1] Nav -->
+          <nav>
+            <a aria-label="Navigate to home page" href="/" class="logo">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+                <g fill="#323334" fill-rule="evenodd">
+                  <path
+                    d="M0 32V.241h23.041zM31.15 32V.241h-4.411L17.48 13.158zM3.645 32l11.854-15.879L27.353 32z"
+                  />
+                </g>
+              </svg>
+            </a>
+  
+            <button
+              class="menu-toggler"
+              aria-label="Show links menu"
+              onclick="toggler(event)"
+            >
+              <img src="images/icon-hamburger.svg" alt="" />
+            </button>
+  
+            <ul class="links">
+              <li><a href="/">Product</a></li>
+              <li><a href="/">Features</a></li>
+              <li><a href="/">Pricing</a></li>
+              <li class="separator"></li>
+              <li><a href="/">Login</a></li>
+            </ul>
+          </nav>
+  
+          <!-- [2] Txt -->
+          <div class="txt">
+            <div class="badge">
+              <span>New</span>
+              <p class="special-txt">Monograph Dashboard</p>
+            </div>
+  
+            <h1 class="title">
+              Powerful insights<br />
+              into your team
+            </h1>
+            <p>Project planning and time tracking for agile teams</p>
+  
+            <div class="demo">
+              <a href="/">Schedule a demo</a>
+              <span class="special-txt">to see a live preview</span>
+            </div>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </main>
 
     <script>
       function toggler(e) {
